@@ -20,7 +20,7 @@
     margin: 0px auto;
     border: 1px solid rgb(190, 190, 190);
     border-radius: 5px;
-    box-shadow: 1px 1px 5px rgb(190, 190, 190);
+    
 }
 
 .headContainer{
@@ -74,22 +74,70 @@ li{
     
 }
 
-.gray{
+.lineGray{
     background-color: #f2f2f2;
 }
 
-.checkbox{
-
-    margin: 12px;
-    background-color: grey ;
+#c1 input:checked ~ .checkmark {
+    background-color: rgb(190, 190, 190);
+    border-radius: 3px;
+}
+.checkContainer {
+    display: block;
+    position: relative;
+    padding: 0px 12px 0px 12px;
     cursor: pointer;
+    font-size: 20px;
+    border-radius: 3px;
+}
+.checkContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
 
-span{
+.checkmark {
+    float: left;
+    margin-top: 22px;
+    height: 12px;
+    width: 12px;
+    background-color: white;
+    border: 2px solid rgb(160, 160, 160);
+    border-radius: 3px;
+}
+  
+.checkContainer:hover input ~ .checkmark {
+    background-color:rgb(190, 190, 190);
+    
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkContainer input:checked ~ .checkmark:after {
+    display: block;
+    
+}
+.checkContainer .checkmark:after {
+    left: 18px;
+    top: 25px;
+    width: 3px;
+    height: 7px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.spanTodo{
     width: 80%;
 }
 @media(max-width: 430px ){
-    span{
+    .spanTodo{
         font-size: 3vw;
         width: 80%;
     }
