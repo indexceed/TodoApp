@@ -1,0 +1,175 @@
+*{
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+.container{
+    
+    margin: 35% 10px; 
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    min-height: 460px;
+    height: auto;
+    margin: 0px auto;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    
+}
+
+.headContainer{
+    border-bottom: 1px solid rgb(190, 190, 190);
+    min-height: 50px;
+    line-height: 50px;
+    background-color: #f2f2f2;
+    padding-left: 20px;
+    
+}
+
+.submitContainer{
+    height: 40px;
+    margin: 20px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.inputTodo{
+    padding-left: 15px;
+    width: 90%;
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px 0px 0px 5px;
+}
+
+.submitButton{
+    width: 75px;
+    border: 1px solid rgb(190, 190, 190);
+    border-left: 0px;
+    border-radius: 0px 5px 5px 0px;
+    background-color: #007dff;
+    color: white;
+}
+
+.listcontainer{
+    margin: 10px;
+    margin: 20px ;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+li{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(190, 190, 190);
+    line-height: 60px;
+    
+}
+
+.lineGray{
+    background-color: #f2f2f2;
+}
+
+#c1 input:checked ~ .checkmark {
+    background-color: rgb(190, 190, 190);
+    border-radius: 3px;
+}
+.checkContainer {
+    display: block;
+    position: relative;
+    padding: 0px 12px 0px 12px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 3px;
+}
+.checkContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    float: left;
+    margin-top: 22px;
+    height: 12px;
+    width: 12px;
+    background-color: white;
+    border: 2px solid rgb(160, 160, 160);
+    border-radius: 3px;
+}
+  
+.checkContainer:hover input ~ .checkmark {
+    background-color:rgb(190, 190, 190);
+    
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkContainer input:checked ~ .checkmark:after {
+    display: block;
+    
+}
+.checkContainer .checkmark:after {
+    left: 18px;
+    top: 25px;
+    width: 3px;
+    height: 7px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.spanTodo{
+    width: 80%;
+}
+@media(max-width: 430px ){
+    .spanTodo{
+        font-size: 3vw;
+        width: 80%;
+    }
+ }
+
+.editButton{
+    float: left;
+    margin: 3px;
+    height: 30px;
+    width: 45px;
+    border: 0px solid  rgb(190, 190, 190);
+    border-radius: 4px ;
+    align-self: center;
+    background-color: #00aa34;
+    cursor: pointer;
+}
+
+.deleteButton{
+    float: left;
+    margin: 3px;
+    margin-right: 9px;
+    height: 30px;
+    width: 45px;
+    border: 0px solid  rgb(190, 190, 190);
+    border-radius: 4px ;
+    align-self: center;
+    background-color: #f0143e;
+    cursor: pointer;
+}
+
+.bi{
+    color: white;
+    font-size: large;
+}
+ 
