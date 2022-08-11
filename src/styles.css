@@ -7,7 +7,8 @@
 }
 
 .container{
-    margin: 10px;
+    
+    margin: 35% 10px; 
 }
 
 .mainContainer{
@@ -17,11 +18,13 @@
     min-height: 460px;
     height: auto;
     margin: 0px auto;
-    border: 1px solid gray
+    border: 1px solid rgb(190, 190, 190);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgb(190, 190, 190);
 }
 
 .headContainer{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgb(190, 190, 190);
     min-height: 50px;
     line-height: 50px;
     background-color: #f2f2f2;
@@ -39,13 +42,13 @@
 input{
     padding-left: 15px;
     width: 90%;
-    border: 1px solid gray;
+    border: 1px solid rgb(190, 190, 190);
     border-radius: 5px 0px 0px 5px;
 }
 
 button{
     width: 75px;
-    border: 1px solid gray;
+    border: 1px solid rgb(190, 190, 190);
     border-left: 0px;
     border-radius: 0px 5px 5px 0px;
     background-color: #007dff;
@@ -54,7 +57,11 @@ button{
 
 .listcontainer{
     margin: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgb(190, 190, 190);
+    margin: 20px ;
+    display: flex;
+    flex-direction: col;
+    justify-content: center;
 }
 
 ul{
