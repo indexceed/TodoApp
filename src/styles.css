@@ -84,14 +84,16 @@ li{
     background-color: grey ;
     cursor: pointer;
 }
-.checkbox:checked{
-    background-color:gray;
-}
 
 span{
-    
     width: 80%;
 }
+@media(max-width: 430px ){
+    span{
+        font-size: 3vw;
+        width: 80%;
+    }
+ }
 
 .editButton{
     float: left;
@@ -102,7 +104,9 @@ span{
     border-radius: 4px ;
     align-self: center;
     background-color: #00aa34;
+    cursor: pointer;
 }
+
 .deleteButton{
     float: left;
     margin: 3px;
@@ -113,9 +117,11 @@ span{
     border-radius: 4px ;
     align-self: center;
     background-color: #f0143e;
+    cursor: pointer;
 }
 
 .bi{
     color: white;
     font-size: large;
 }
+ 
