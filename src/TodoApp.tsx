@@ -33,7 +33,13 @@ const initialState = [
         done: false
     }
 ]
-const init = ()=> { return JSON.parse(localStorage.getItem('todos')) || [] }
+const init = ()=> { return JSON.parse(localStorage.getItem('todos') || '' ) || [] }
+
+interface TodoItem {
+    id: number;
+    description: string;
+    done: boolean;
+} 
 
 export const TodoApp = () => {
 
@@ -43,7 +49,7 @@ export const TodoApp = () => {
         localStorage.setItem('todos',JSON.stringify(todos))
     },[todos])
     
-    const handleNewTodo = (todo) => {
+    const handleNewTodo = (todo:TodoItem) => {
 
         const action = {
 

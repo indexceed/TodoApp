@@ -1,7 +1,16 @@
 import { useForm } from "./useForm"
 
+interface TodoItem {
+    id: number;
+    description: string;
+    done: boolean;
+} 
+interface Props {
 
-export const TodoAdd = ({onNewTodo}) => {
+    onNewTodo: (item: TodoItem) => void
+}
+
+export const TodoAdd = ({onNewTodo}:Props) => {
 
 
     const { description, onInputChange, onResetForm} = useForm({
@@ -10,7 +19,7 @@ export const TodoAdd = ({onNewTodo}) => {
 
     })
 
-    const onFormSubmit = (event) => {
+    const onFormSubmit = (event:React.FormEvent) => {
         event.preventDefault()
 
         if(description.length <= 1) return
