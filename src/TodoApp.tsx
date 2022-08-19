@@ -58,12 +58,19 @@ export const TodoApp = () => {
         dispatch(action)
     }
 
-    const handleToggleTodo = (id) => {
-        dispatch({
+        const handleToggleTodo = (id) => {
+            dispatch({
             type: 'checkTodo',
             payload: id
         })
     }
+
+    const handleDeleteTodo = (id) => {
+        dispatch({
+        type: 'deleteTodo',
+        payload: id
+    })
+}
 
   return (
     <>
@@ -80,6 +87,7 @@ export const TodoApp = () => {
                             <TodoList 
                                 todos={todos}
                                 onToggleTodo={handleToggleTodo}
+                                onDeleteTodo={handleDeleteTodo}
                             />
                     </div>
                 </div>

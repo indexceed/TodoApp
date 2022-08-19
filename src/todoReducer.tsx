@@ -9,9 +9,8 @@ export const todoReducer = (initialState, action) => {
         case 'addTodo':
             return[...initialState,action.payload]
 
-        case 'deletTodo':
-
-            throw new Error('action.Type = deletTodo no esta implementado')
+        case 'deleteTodo':
+            return initialState.filter(todo => todo.id !== action.payload)
 
         case 'editTodo':
 
