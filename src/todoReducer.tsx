@@ -18,8 +18,14 @@ export const todoReducer = (initialState, action) => {
             throw new Error('action.Type = editTodo no esta implementado')
 
         case 'checkTodo':
+            return initialState.map( todo => {
 
-            throw new Error('action.Type = checkTodo no esta implementado')
+                if(todo.id === action.payload){
+                    return{...todo, done: !todo.done}
+                }
+
+                return todo
+            })
             
            
         default:

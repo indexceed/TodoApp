@@ -52,11 +52,17 @@ export const TodoApp = () => {
     const handleNewTodo = (todo:TodoItem) => {
 
         const action = {
-
             type: 'addTodo',
             payload: todo
         }
         dispatch(action)
+    }
+
+    const handleToggleTodo = (id) => {
+        dispatch({
+            type: 'checkTodo',
+            payload: id
+        })
     }
 
   return (
@@ -71,7 +77,10 @@ export const TodoApp = () => {
 
                     <div>
                             <TodoAdd onNewTodo={handleNewTodo}/>
-                            <TodoList todos={todos}/>
+                            <TodoList 
+                                todos={todos}
+                                onToggleTodo={handleToggleTodo}
+                            />
                     </div>
                 </div>
             </div>
