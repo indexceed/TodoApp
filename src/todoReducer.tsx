@@ -1,6 +1,6 @@
-
-
- 
+import { TodoAdd } from "./TodoAdd"
+import { useForm } from "./useForm"
+TodoAdd
 
 
 export const todoReducer = (initialState, action) => {
@@ -13,9 +13,15 @@ export const todoReducer = (initialState, action) => {
             return initialState.filter(todo => todo.id !== action.payload)
 
         case 'editTodo':
+            return initialState.map( todo => {
 
-            throw new Error('action.Type = editTodo no esta implementado')
+                if(todo.id === action.payload){
+                    return {...todo, edit: !todo.edit}
+                }
 
+                return todo
+            })
+            
         case 'checkTodo':
             return initialState.map( todo => {
 

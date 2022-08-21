@@ -37,6 +37,13 @@
     flex-direction: row;
     justify-content: center;
 }
+.editContainer{
+    height: 25px;
+    margin: 18px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 
 .inputTodo{
     padding-left: 15px;
@@ -154,6 +161,18 @@ li{
     border: 0px solid  rgb(190, 190, 190);
     border-radius: 4px ;
     align-self: center;
+    background-color: #00aa34;
+    cursor: pointer;
+}
+.onEditButton{
+    float: left;
+    margin: 3px;
+    height: 25px;
+    width: 65px;
+    border: 0px solid  rgb(190, 190, 190);
+    border-radius: 4px ;
+    align-self: center;
+    color:white;
     background-color: #00aa34;
     cursor: pointer;
 }

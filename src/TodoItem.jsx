@@ -1,6 +1,7 @@
+import { useForm } from "./useForm"
+import { TodoEdit } from "./TodoEdit";
 
-
-export const TodoItem = ({todo, onToggleTodo, onDeleteTodo}) => {
+export const TodoItem = ({todo, onToggleTodo, onDeleteTodo, onEditTodo}) => {
   return (
   
         <li>
@@ -12,12 +13,29 @@ export const TodoItem = ({todo, onToggleTodo, onDeleteTodo}) => {
                 />
                 <span className='checkmark' ></span>
             </label>
-            <span 
-              className='spanTodo' 
-              style={{textDecoration: todo.done ?  'line-through' : ''}}> 
-                {todo.description} 
-            </span>
-            <button className='editButton'><i className="bi bi-pencil-square"></i></button>
+
+
+            <div className='spanTodo' >
+              {
+                !todo.edit ?
+                <span     
+                  style={{textDecoration: todo.done ?  'line-through' : ''}}
+                  > 
+                  {todo.description} 
+                </span>
+                :
+                <TodoEdit/>
+              }
+            </div>
+            
+                
+
+            <button 
+              className='editButton'
+              onClick={() => onEditTodo(todo.id)}
+              
+              ><i className="bi bi-pencil-square"></i></button>
+              
             <button 
               className='deleteButton'
               onClick={() => onDeleteTodo(todo.id)}

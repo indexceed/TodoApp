@@ -4,8 +4,6 @@ export const useForm = (initialForm = {}) => {
 
     const [formState, setFormState] = useState(initialForm)
 
-    let description: string
-
    
     const onInputChange = ( { target }: React.ChangeEvent<HTMLInputElement> ) => {
         

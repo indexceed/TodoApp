@@ -38,19 +38,24 @@ export const TodoAdd = ({onNewTodo}:Props) => {
         
     }
 
-  return (
-    <>
-        <form className='submitContainer' onSubmit={onFormSubmit}>
-            <input 
-                className='inputTodo' 
-                type="text" 
-                placeholder='Enter todo here'
-                name='description'
-                value={ description }
-                onChange={onInputChange}
-            />
-            <button className='submitButton' onClick={onFormSubmit}>Agregar</button>
-        </form>
-    </>
-  )
+    return (
+        <>
+            <form className='editContainer' onSubmit={onFormSubmit}>
+                <input 
+                    className='inputTodo' 
+                    type="text" 
+                    placeholder='Enter todo here'
+                    name='description'
+                    value={ description }
+                    onChange={onInputChange}
+                />
+                <button className='onEditButton' onClick={onFormSubmit}>Agregar</button>
+            </form>
+        </>
+      )
+
 }
+
+
+
+
