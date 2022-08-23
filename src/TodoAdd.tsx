@@ -1,11 +1,7 @@
-import { useForm } from "./useForm"
+import React, { useState } from "react";
+import {TodoItem} from './types'
 
-interface TodoItem {
-    id: number;
-    description: string;
-    done: boolean;
-    edit:boolean;
-} 
+
 interface Props {
 
     onNewTodo: (item: TodoItem) => void
@@ -13,12 +9,7 @@ interface Props {
 
 export const TodoAdd = ({onNewTodo}:Props) => {
 
-
-    const { description, onInputChange, onResetForm} = useForm({
-
-        description: ''
-
-    })
+    const [description, setDescription] = useState<string>('')
 
     const onFormSubmit = (event:React.FormEvent) => {
         event.preventDefault()
@@ -27,14 +18,13 @@ export const TodoAdd = ({onNewTodo}:Props) => {
 
         const newTodo = {
             
-            id: new Date().getTime()+10,
+            id: Date.now(),
             done: false,
             description: description,
-            edit: false,
-        }
+        } 
 
         onNewTodo(newTodo)
-        onResetForm()
+        setDescription('')
         
     }
 
@@ -47,7 +37,7 @@ export const TodoAdd = ({onNewTodo}:Props) => {
                 placeholder='Enter todo here'
                 name='description'
                 value={ description }
-                onChange={onInputChange}
+                onChange={(e:React.FormEvent)=> setDescription((e.target as HTMLInputElement).value)}
             />
             <button className='submitButton' onClick={onFormSubmit}>Agregar</button>
         </form>

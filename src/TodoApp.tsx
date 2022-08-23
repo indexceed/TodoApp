@@ -1,38 +1,12 @@
-import { useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 
-import { todoReducer } from './todoReducer'
 import { TodoList } from './TodoList'
 import { TodoAdd } from './TodoAdd'
+
 import './styles.css'
 
+//const initialState = [] as any
 
-const initialState = [
-    {
-        id: new Date().getTime()+10,
-        description: 'walk the dog',
-        done: false
-    },
-    {
-        id: new Date().getTime()+100,
-        description: 'authenticate with passport-js',
-        done: false
-    },
-    {
-        id: new Date().getTime()+1000,
-        description: ' validate register input ',
-        done: false
-    },
-    {
-        id: new Date().getTime()*10,
-        description: ' create reddit wesite ',
-        done: false
-    },
-    {
-        id: new Date().getTime()*100,
-        description: ' store sessions on mongodb ',
-        done: false
-    }
-]
 const init = ()=> { return JSON.parse(localStorage.getItem('todos') || '' ) || [] }
 
 interface TodoItem {
@@ -43,40 +17,46 @@ interface TodoItem {
 
 export const TodoApp = () => {
 
-    const [todos, dispatch] = useReducer(todoReducer, initialState, init)
+    const [todos, setTodos] = useState<TodoItem[]> (init)
+    const [currentTodo, setCurrentTodo] = useState<string>('')
+    const [editable, setEditable] = useState<boolean>(false)
+    const [editableIndex, setEditableIndex] = useState<number>(0)
+    const [done, setDone] = useState<TodoItem[]>([])
 
     useEffect(()=> {
         localStorage.setItem('todos',JSON.stringify(todos))
     },[todos])
+
     
     const handleNewTodo = (todo:TodoItem) => {
-
-        const action = {
-            type: 'addTodo',
-            payload: todo
-        }
-        dispatch(action)
+       const todosTMP = [...todos];
+       todosTMP.push(todo)
+       setTodos(todosTMP)
     }
 
-        const handleToggleTodo = (id) => {
-            dispatch({
-            type: 'checkTodo',
-            payload: id
-        })
+    const handleToggleTodo = (index:number) => {
+        
+        
+
     }
 
-    const handleDeleteTodo = (id) => {
-            dispatch({
-            type: 'deleteTodo',
-            payload: id
-        })
+    const handleDeleteTodo = (index:number) => {
+        const todosTMP = [...todos];
+        todosTMP.splice(index, 1)
+        setTodos(todosTMP)
     }
 
-    const handleEditTodo = (id) => {
-        dispatch({
-        type: 'editTodo',
-        payload: id
-    })
+    const handleEditTodoActive = (index:number) => {
+        setCurrentTodo(todos[index].description)
+        setEditable(true)
+        setEditableIndex(index)
+}
+
+    const handleEditTodoText = () => {
+        const todosTMP = [...todos]
+        todosTMP[editableIndex].description=currentTodo
+        setTodos(todosTMP)
+        
 }
 
   return (
@@ -89,15 +69,22 @@ export const TodoApp = () => {
                         <h3>Todos ({todos.length})</h3>
                     </div>
 
-                    <div>
-                            <TodoAdd onNewTodo={handleNewTodo}/>
-                            <TodoList 
-                                todos={todos}
-                                onToggleTodo={handleToggleTodo}
-                                onDeleteTodo={handleDeleteTodo}
-                                onEditTodo={handleEditTodo}
-                            />
-                    </div>
+                        <div>
+                                <TodoAdd onNewTodo={handleNewTodo}/>
+
+                                <TodoList 
+                                    todos={todos}
+                                    onDeleteTodo={handleDeleteTodo}
+                                    activeEdit={handleEditTodoActive}
+                                    editable ={editable}
+                                    setEditable={setEditable}
+                                    editableIndex={editableIndex}
+                                    currentTodo={currentTodo}
+                                    saveEdit={handleEditTodoText}
+                                    setCurrentTodo={setCurrentTodo}
+                                    toggleTodo={handleToggleTodo}
+                                />
+                        </div>
                 </div>
             </div>
         </div>

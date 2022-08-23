@@ -1,7 +1,6 @@
-import { useForm } from "./useForm"
-import { TodoEdit } from "./TodoEdit";
+import { TodoEdit } from "./TodoEdit"
 
-export const TodoItem = ({todo, onToggleTodo, onDeleteTodo, onEditTodo}) => {
+export const TodoItem = ({todo, index, onDeleteTodo, activeEdit, editable, setEditable, editableIndex, currentTodo, saveEdit, setCurrentTodo, toggleTodo}:any) => {
   return (
   
         <li>
@@ -9,7 +8,7 @@ export const TodoItem = ({todo, onToggleTodo, onDeleteTodo, onEditTodo}) => {
                 <input 
                   type="checkbox" 
                   defaultChecked={todo.done}
-                  onClick={() => onToggleTodo(todo.id)}
+                  onClick={() => toggleTodo(index)}
                 />
                 <span className='checkmark' ></span>
             </label>
@@ -17,14 +16,9 @@ export const TodoItem = ({todo, onToggleTodo, onDeleteTodo, onEditTodo}) => {
 
             <div className='spanTodo' >
               {
-                !todo.edit ?
-                <span     
-                  style={{textDecoration: todo.done ?  'line-through' : ''}}
-                  > 
-                  {todo.description} 
-                </span>
-                :
-                <TodoEdit/>
+                editable && editableIndex === index 
+                ? <TodoEdit saveEdit={saveEdit} setEditable={setEditable} currentTodo={currentTodo} setCurrentTodo={setCurrentTodo}/>
+                :<span style={{textDecoration: todo.done ?  'line-through' : ''}}> {todo.description} </span>
               }
             </div>
             
@@ -32,13 +26,13 @@ export const TodoItem = ({todo, onToggleTodo, onDeleteTodo, onEditTodo}) => {
 
             <button 
               className='editButton'
-              onClick={() => onEditTodo(todo.id)}
+              onClick={() => activeEdit(index)}
               
               ><i className="bi bi-pencil-square"></i></button>
               
             <button 
               className='deleteButton'
-              onClick={() => onDeleteTodo(todo.id)}
+              onClick={() => onDeleteTodo(index)}
             ><i className="bi bi-trash"></i></button>
         </li>  
   )
