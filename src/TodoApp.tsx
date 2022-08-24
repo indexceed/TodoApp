@@ -12,7 +12,8 @@ interface TodoItem {
 }
 
 const init = () => {
-  return JSON.parse(localStorage.getItem("todos") || "") || [];
+  const todos = localStorage.getItem("todos");
+  return JSON.parse(todos || '[]');
 };
 
 export const TodoApp = () => {
@@ -22,6 +23,7 @@ export const TodoApp = () => {
   const [editableIndex, setEditableIndex] = useState<number>(0);
 
   useEffect(() => {
+    console.log({todos})
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
