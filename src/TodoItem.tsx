@@ -14,7 +14,7 @@ export const TodoItem = ({
   toggleTodo,
 }: any) => {
   return (
-    <li>
+    <li className={(index%2 === 0) ? "listBackground" : "" }>
       <label className="checkContainer" id="c1">
         <input
           type="checkbox"

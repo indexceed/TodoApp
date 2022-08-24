@@ -83,6 +83,10 @@ li {
   border: 1px solid rgb(190, 190, 190);
 }
 
+.listBackground{
+  background-color: rgb(238, 238, 238);
+}
+
 .lineGray {
   background-color: #f2f2f2;
 }
