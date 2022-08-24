@@ -1,45 +1,45 @@
-import { useForm } from "./useForm"
+import React, { useState } from "react";
+import { TodoItem } from "./types";
 
+interface Props {
+  onNewTodo: (item: TodoItem) => void;
+}
 
-export const TodoAdd = ({onNewTodo}) => {
+export const TodoAdd = ({ onNewTodo }: Props) => {
+  const [description, setDescription] = useState<string>("");
 
+  const onFormSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
 
-    const { description, onInputChange, onResetForm} = useForm({
+    if (description.length <= 1) return;
 
-        description: ''
+    const newTodo = {
+      id: Date.now(),
+      done: false,
+      description: description,
+    };
 
-    })
-
-    const onFormSubmit = (event) => {
-        event.preventDefault()
-
-        if(description.length <= 1) return
-
-        const newTodo = {
-            
-            id: new Date().getTime()+10,
-            done: false,
-            description: description,
-        }
-
-        onNewTodo(newTodo)
-        onResetForm()
-        
-    }
+    onNewTodo(newTodo);
+    setDescription("");
+  };
 
   return (
     <>
-        <form className='submitContainer' onSubmit={onFormSubmit}>
-            <input 
-                className='inputTodo' 
-                type="text" 
-                placeholder='Enter todo here'
-                name='description'
-                value={ description }
-                onChange={onInputChange}
-            />
-            <button className='submitButton' onClick={onFormSubmit}>Agregar</button>
-        </form>
+      <form className="submitContainer" onSubmit={onFormSubmit}>
+        <input
+          className="inputTodo"
+          type="text"
+          placeholder="Enter todo here"
+          name="description"
+          value={description}
+          onChange={(e: React.FormEvent) =>
+            setDescription((e.target as HTMLInputElement).value)
+          }
+        />
+        <button className="submitButton" onClick={onFormSubmit}>
+          Agregar
+        </button>
+      </form>
     </>
-  )
-}
+  );
+};
