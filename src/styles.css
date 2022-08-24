@@ -76,10 +76,11 @@
 }
 
 li {
+  padding: 20px 0px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   border: 1px solid rgb(190, 190, 190);
-  line-height: 60px;
 }
 
 .lineGray {
@@ -91,7 +92,8 @@ li {
   border-radius: 3px;
 }
 .checkContainer {
-  display: block;
+  display: flex;
+  align-items: center;
   position: relative;
   padding: 0px 12px 0px 12px;
   cursor: pointer;
@@ -108,7 +110,6 @@ li {
 
 .checkmark {
   float: left;
-  margin-top: 22px;
   height: 12px;
   width: 12px;
   background-color: white;
@@ -129,7 +130,6 @@ li {
 }
 .checkContainer .checkmark:after {
   left: 18px;
-  top: 25px;
   width: 3px;
   height: 7px;
   border: solid black;
